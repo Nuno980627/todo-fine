@@ -2,8 +2,8 @@
   <el-scrollbar class="menu-view scroll-page">
     <div class="menu-group">
       <div class="menu-title">special collections</div>
-      <div class="menu-item active">
-        <div class="left"><i class="iconfont icon-shoucang2"></i>特别TODO</div>
+      <div v-for="(item,index) in specialList" :key="index" class="menu-item " :class="{active:currentID===item.id}">
+        <div class="left"><i class="iconfont icon-shoucang2"></i>{{item.name}}</div>
       </div>
 
     </div>
@@ -11,8 +11,8 @@
     <div class="menu-group">
       <div class="menu-title">normal collections</div>
     
-      <div class="menu-item">
-        <div class="left"><i class="iconfont icon-lishi"></i>普通TODO</div>
+      <div v-for="(item,index) in normalList" :key="index" class="menu-item" :class="{active:currentID===item.id}">
+        <div class="left"><i class="iconfont icon-lishi"></i>{{item.name}}</div>
       </div>
 
     </div>
@@ -22,7 +22,13 @@
 </template>
 
 <script>
-export default {}
+import {  mapGetters} from 'vuex'
+export default {
+  name:"Menu",
+  computed:{
+     ...mapGetters(['normalList','specialList','currentID'])
+  },
+}
 </script>
 
 <style lang="scss" scoped>
