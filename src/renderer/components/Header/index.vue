@@ -11,9 +11,9 @@
                 <i class="btn el-icon-refresh"></i>
             </el-button>
 
-            <div class="search no-drag">
+            <!-- <div class="search no-drag">
                 <el-input size="mini" prefix-icon="el-icon-search" placeholder="搜索音乐、MV、歌单、用户"></el-input>
-            </div>
+            </div> -->
         </div>
         <div class="right">
             <el-button @click="minimize" class="no-drag" size="mini" type="text">
@@ -37,15 +37,9 @@
         },
         methods: {
             close() {
-                this.$confirm('此操作将退出土狗云音乐, 是否继续?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
+  
                     this.$electron.ipcRenderer.send('close')
-                }).catch(() => {
-
-                })
+           
             },
             minimize() {
                 this.$electron.ipcRenderer.send('minimize')

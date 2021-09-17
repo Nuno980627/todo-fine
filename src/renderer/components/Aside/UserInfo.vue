@@ -2,7 +2,7 @@
     <div class="user-info">
         <div class="avatar no-drag" @click="login">
             <img v-if="user.is_login" :src="user.profile.avatarUrl" />
-            <img v-else src="../../assets/images/max.png">
+            <img v-else src="../../assets/images/index.png">
         </div> 
     </div>
 </template>

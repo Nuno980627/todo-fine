@@ -36,9 +36,9 @@ export default {
         }
     },
     mounted() {
-        this.$bus.$on('login', res => {
-            this.dialogVisible = true
-        })
+        // this.$bus.$on('login', res => {
+        //     this.dialogVisible = true
+        // })
     },
     methods: {
         loginClick() {

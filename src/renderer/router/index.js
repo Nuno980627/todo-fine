@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import main from '@/views/main'
 
 Vue.use(Router)
 
@@ -8,17 +9,13 @@ export default new Router({
         {
             path: '/',
             name: 'main',
-            redirect: { name: 'music' },
-            component: require('@/views/main').default,
+            redirect: { name: 'master' },
+            component: main,
             children: [
                 {
-                    path: 'music',
-                    name: 'music',
-                    component: () => import('../views/music/index.vue')
-                }, {
-                    path: 'playlist-detail',
-                    name: 'playlist-detail',
-                    component: () => import('../views/playlist/detail')
+                    path: 'master',
+                    name: 'master',
+                    component: () => import('@/views/master/index.vue')
                 }
             ]
         },
