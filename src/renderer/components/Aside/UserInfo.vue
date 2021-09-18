@@ -1,28 +1,21 @@
 <template>
-    <div class="user-info">
-        <div class="avatar no-drag" @click="login">
-            <img  src="../../assets/images/index.png">
-        </div> 
+  <div class="user-info">
+    <div class="avatar no-drag">
+      <img src="../../assets/images/index.png">
     </div>
+  </div>
 </template>
 <script>
-    export default {
-        methods: {
-            login() {
-                if (this.user.is_login) {
-
-                } else {
-                    this.$bus.$emit('login')
-                }
-
-            }
-        },
-        computed: {
-            user() {
-                return this.$store.state.user
-            }
-        }
+export default {
+  computed: {
+    user() {
+      return this.$store.state.user
     }
+  },
+  methods: {
+
+  }
+}
 </script>
 <style lang="scss" scoped>
     .user-info {

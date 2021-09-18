@@ -1,5 +1,5 @@
 <template>
-  <div class="master-body" v-loading="loading">
+  <div v-loading="loading" class="master-body">
     <master-header style="position: fixed;top: 50px;" />
 
     <div class="list">
@@ -9,7 +9,7 @@
         :key="index"
         :item="item"
       />
-      <div style="height:50px;"></div>
+      <div style="height:50px;" />
     </div>
   </div>
 </template>
@@ -21,6 +21,11 @@ import MissionItem from './MissionItem'
 
 export default {
   name: 'Master',
+  components: {
+    MasterHeader,
+    CreatMenu,
+    MissionItem
+  },
   data() {
     return {
       loading: false,
@@ -28,25 +33,20 @@ export default {
         {
           id: 1,
           info: 'todo第一条',
-          state: true, //是否完成
-          type: 0, //定时
+          state: true, // 是否完成
+          type: 0, // 定时
           belone_id: 0,
           update_time: '',
           important: 0
-        },
-      ],
+        }
+      ]
     }
-  },
-  components: {
-    MasterHeader,
-    CreatMenu,
-    MissionItem,
   },
   methods: {
     creatNew(e) {
       this.missionList.unshift(e)
-    },
-  },
+    }
+  }
 }
 </script>
 

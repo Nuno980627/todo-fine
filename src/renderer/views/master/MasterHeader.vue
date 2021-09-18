@@ -2,11 +2,12 @@
   <div class="master-body-header">
     <div class="title">Header中文示范123?</div>
     <div class="tools">
-      <span class="tools-item"><i class="el-icon-star-off"></i> </span>
-      <span class="tools-item"
-        ><el-popconfirm title="确定删除该任务吗？">
-          <i class="el-icon-delete" slot="reference"></i>
-        </el-popconfirm>
+      <span class="tools-item"><i class="el-icon-star-off" /> </span>
+      <span
+        class="tools-item"
+      ><el-popconfirm title="确定删除该任务吗？">
+        <i slot="reference" class="el-icon-delete" />
+      </el-popconfirm>
       </span>
     </div>
   </div>
@@ -14,7 +15,7 @@
 
 <script>
 export default {
-    name:'MasterHeader'
+  name: 'MasterHeader'
 }
 </script>
 

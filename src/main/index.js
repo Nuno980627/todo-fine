@@ -1,5 +1,4 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron'
-
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -16,16 +15,15 @@ const winURL =
     ? `http://localhost:9080`
     : `file://${__dirname}/index.html`
 
-//const express = require('/app.js');
+// const express = require('/app.js');
 
 const express = require('express')
 const apicache = require('apicache')
 const path = require('path')
 const fs = require('fs')
-let cache = apicache.middleware
+const cache = apicache.middleware
 
-
-//托盘对象
+// 托盘对象
 var appTray = null
 
 import routes from './routers'
@@ -64,7 +62,7 @@ function createWindow() {
   app.listen(port, () => {
     console.log(`server running @ http://localhost:${port}`)
   })
-  //express();
+  // express();
   /**
    * Initial window options
    */
@@ -79,41 +77,41 @@ function createWindow() {
     title: 'TodoFine',
     autoHideMenuBar: true,
     x: 0,
-    y: 0,
+    y: 0
   })
 
   mainWindow.loadURL(winURL)
-
-  //系统托盘右键菜单
+  mainWindow.center()
+  // 系统托盘右键菜单
   var trayMenuTemplate = [
-      {
-        label: 'show',
-        click: function() {
-          //ipc.send('close-main-window');
-          mainWindow.show()
-        },
-      },
+    {
+      label: 'show',
+      click: function() {
+        // ipc.send('close-main-window');
+        mainWindow.show()
+      }
+    },
 
     {
       label: 'quie',
       click: function() {
-        //ipc.send('close-main-window');
+        // ipc.send('close-main-window');
         mainWindow.close()
-      },
+      }
     }
   ]
-  //系统托盘图标目录
+  // 系统托盘图标目录
   appTray = new Tray(path.resolve('./build/icons/', 'icon.ico'))
 
-  //图标的上下文菜单
+  // 图标的上下文菜单
   const contextMenu = Menu.buildFromTemplate(trayMenuTemplate)
 
-  //设置此托盘图标的悬停提示内容
+  // 设置此托盘图标的悬停提示内容
   appTray.setToolTip('TODO-FINE')
 
-  //设置此图标的上下文菜单
+  // 设置此图标的上下文菜单
   appTray.setContextMenu(contextMenu)
-  appTray.on('click', function (Event) {
+  appTray.on('click', function(Event) {
     mainWindow.show()
   })
 
@@ -137,10 +135,10 @@ app.on('activate', () => {
 })
 
 ipcMain.on('close', (e) => {
-  if(mainWindow.isVisible()){
-      mainWindow.hide()
+  if (mainWindow.isVisible()) {
+    mainWindow.hide()
   }
- // mainWindow.close()
+  // mainWindow.close()
 })
 ipcMain.on('minimize', (e) => {
   mainWindow.minimize()

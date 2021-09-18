@@ -2,15 +2,15 @@
   <div>
     <div
       v-if="type === 0"
-      @dblclick="dbclick"
       class="mission"
       :style="{ color: item.state ? '#c4c4c4' : '' }"
+      @dblclick="dbclick"
     >
       <div>
         <el-checkbox
-          :disabled="item.isUploading"
           v-model="item.state"
-        ></el-checkbox>
+          :disabled="item.isUploading"
+        />
       </div>
       <div>
         {{ item.info }}
@@ -21,57 +21,51 @@
             <i
               :style="{ color: item.state ? '#c4c4c4' : '' }"
               class="el-icon-more"
-            ></i>
+            />
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
-              <i class="el-icon-close"></i>删除</el-dropdown-item
-            >
+              <i class="el-icon-close" />删除</el-dropdown-item>
             <el-dropdown-item v-if="!item.important">
-              <i class="el-icon-star-off"></i>特别事件</el-dropdown-item
-            >
+              <i class="el-icon-star-off" />特别事件</el-dropdown-item>
             <el-dropdown-item v-else-if="item.important">
-              <i style="color:#ff9090;" class="el-icon-star-off"></i
-              >取消特别</el-dropdown-item
-            >
+              <i style="color:#ff9090;" class="el-icon-star-off" />取消特别</el-dropdown-item>
             <el-dropdown-item>
-              <i class="el-icon-time"></i>定时</el-dropdown-item
-            >
+              <i class="el-icon-time" />定时</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <i v-else class="el-icon-loading"/>
+        <i v-else class="el-icon-loading" />
       </div>
     </div>
     <el-input
       v-else-if="type === 1"
       ref="input"
+      v-model="item.info"
       type="textarea"
       placeholder="请输入内容"
-      v-model="item.info"
       autosize
       resize="none"
       style="width:97%;margin:8px;"
       autofocus
       @blur="inputBlur"
-    >
-    </el-input>
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: 'MissionItem',
-  data() {
-    return {
-      type: 0,
-      base: '',
-    }
-  },
   props: {
     item: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      type: 0,
+      base: ''
+    }
   },
   methods: {
     dbclick() {
@@ -91,8 +85,8 @@ export default {
       } else {
         console.log('nochange')
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
